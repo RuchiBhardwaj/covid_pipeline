@@ -55,5 +55,5 @@ pip install apache-airflow
 
 
 
-# Here is how airflow will look like
+# Here is how the airflow will look like
 https://docs.google.com/document/d/1y7Donx_5IlzgKcMmtry1tcwjcb-pZJ4QyTeQSVj7woU/edit
