@@ -23,24 +23,7 @@ filename = '/home/nineleaps/PycharmProjects/COVID19_Airflow/Pipeline/covid_data/
 dataset_id = 'covid19datatable'
 table_id = 'covid19'
 
-default_args = {
-    'owner': 'airflow',
-    'start_date': days_ago(0),
-    # 'end_date': datetime(2018, 12, 30),
-    'depends_on_past': False,
-    'email': ['ruchi.bhardwaj@nineleaps.com'],
-    # 'email_on_failure': False,
-    # 'email_on_retry': False,
-    # If a task fails, retry it once after waiting
-    # at least 5 minutes
-    'retries': 1,
-    'retry_delay': timedelta(minutes=2),
-}
-dag = DAG(dag_id='covid',
-          default_args=default_args,
-          description="Collecting covid data",
-          schedule_interval=timedelta(days=1),
-          )
+
 
 
 def fetch_covid_state_data():
@@ -86,12 +69,5 @@ def read_the_data(**kwargs):
     print("percentage = {}".format((v1/count)*100))
 
 
-t1 = PythonOperator(task_id="fetch_data", python_callable=fetch_covid_state_data, dag=dag)
-
-t2 = PythonOperator(task_id="load_data", python_callable=load_data, dag=dag)
-
-t3 = PythonOperator(task_id="percentage", python_callable=read_the_data, provide_context=True, dag=dag)
-
-t1 >> t2 >> t3
 
 
