@@ -1,17 +1,11 @@
 import csv
-import datetime
+
 import json
 import os
 
 import requests
 import datetime
-from datetime import timedelta
-import airflow
-from airflow import DAG
-from airflow.models import XCom
-from airflow.operators.bash_operator import BashOperator
-from airflow.operators.python_operator import PythonOperator
-from airflow.utils.dates import days_ago
+
 
 from google.cloud import bigquery
 
